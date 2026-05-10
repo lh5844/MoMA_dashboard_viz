@@ -34,7 +34,7 @@
         }
 
         .wrapper {
-            width: min(100%, 850px);
+            width: min(100%, 1100px);
         }
 
         .db-head {
@@ -150,6 +150,7 @@
             font-size: 11px;
             color: #6B5F52;
             margin-top: 4px;
+            text-transform: uppercase;
         }
 
         .charts-row {
@@ -267,9 +268,12 @@
         }
 
         .mini-lbl {
-            font-size: 11px;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             color: #6B5F52;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
         .source {
@@ -427,7 +431,7 @@
             const ctx = document.getElementById('lineChart').getContext('2d');
             return new Chart(ctx, {
                 type: 'line',
-                data: { labels: LABS, datasets: [{ data: fpct, borderColor: RED, backgroundColor: RED_LIGHT, borderWidth: 2, pointBackgroundColor: RED, pointRadius: 4, pointHoverRadius: 5, fill: true, tension: 0.3 }] },
+                data: { labels: LABS, datasets: [{ data: fpct, borderColor: RED, backgroundColor: RED_LIGHT, borderWidth: 2, pointBackgroundColor: RED, pointBorderWidth: 0, pointHoverBorderWidth: 0, pointRadius: 4, pointHoverRadius: 5, fill: true, tension: 0.3 }] },
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toFixed(1) + '% female' } } },
@@ -479,8 +483,10 @@
 
             const allDec = selDec === 'all';
             lineChart.data.datasets[0].data = fpctVals;
-            lineChart.data.datasets[0].pointBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.35)'));
-            lineChart.data.datasets[0].pointRadius = LABS.map((_, i) => allDec ? 4 : (decIdx.includes(i) ? 5 : 2));
+            lineChart.data.datasets[0].pointBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.6)'));
+            lineChart.data.datasets[0].pointHoverBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.6)'));
+            lineChart.data.datasets[0].pointRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 3));
+            lineChart.data.datasets[0].pointHoverRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 3));
             lineChart.options.scales.y.max = Math.ceil((Math.max(...fpctVals) + 4) / 5) * 5;
             lineChart.update('active');
 
