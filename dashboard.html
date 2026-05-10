@@ -521,8 +521,8 @@
                         backgroundColor: RED_LIGHT,
                         borderWidth: 2,
                         pointBackgroundColor: RED,
-                        pointRadius: 2,
-                        pointHoverRadius: 7,
+                        pointRadius: 5,
+                        pointHoverRadius: 5,
                         fill: true,
                         tension: 0.3,
                     }]
@@ -602,13 +602,17 @@
             // Update line chart data + highlight
             lineChart.data.datasets[0].data = fpctVals;
             const allDec = selDec === 'all';
-            lineChart.data.datasets[0].pointBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.15)'));
-            lineChart.data.datasets[0].pointRadius = LABS.map((_, i) => allDec ? 2 : (decIdx.includes(i) ? 4 : 2));
+            lineChart.data.datasets[0].pointBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.35)'));
+            lineChart.data.datasets[0].pointHoverBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.35)'));
+            lineChart.data.datasets[0].pointHoverRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 3));
+            lineChart.data.datasets[0].pointBorderColor = LABS.map(() => 'transparent');
+            lineChart.data.datasets[0].pointBorderWidth = 0;
+            lineChart.data.datasets[0].pointRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 3));
 
             lineChart.options.plugins.decadeBand.decadeIdx = selDec !== 'all' ? decIdx[0] : null;
             const maxPct = Math.max(...fpctVals);
             lineChart.options.scales.y.max = Math.ceil((maxPct + 4) / 5) * 5;
-            lineChart.update();
+            lineChart.update('active');
 
             renderNat(nd.nat);
         }
