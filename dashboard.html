@@ -131,11 +131,6 @@
             padding: 12px 14px;
         }
 
-        .kpi:nth-child(3) {
-            background: #E8E0D0;
-            border-left: 3px solid #C0392B;
-        }
-
         .kpi-val {
             font-size: 26px;
             font-weight: 500;
@@ -304,7 +299,7 @@
         </div>
         <div class="kpi">
             <div class="kpi-val accent" id="kFemale">9.8%</div>
-            <div class="kpi-lbl">Female artists — all years</div>
+            <div class="kpi-lbl">Female artists</div>
         </div>
         <div class="kpi">
             <div class="kpi-val" id="kDur">67 days</div>
@@ -346,7 +341,7 @@
             </div>
             <div class="mini-stat">
                 <div class="mini-val" id="sMale">90.2%</div>
-                <div class="mini-lbl" id="sMaleLbl">Male artists — all years</div>
+                <div class="mini-lbl" id="sMaleLbl">Male artists</div>
             </div>
             <div class="mini-stat">
                 <div class="mini-val" id="sLongest">486 days</div>
@@ -589,7 +584,7 @@
             document.getElementById('sMale').textContent = mPct.toFixed(1) + '%';
             document.getElementById('sMaleLbl').textContent = selNat !== 'all'
                 ? `Male ${selNat} artists`
-                : 'Male artists — all years';
+                : 'Male artists';
             const longestInFilter = Math.max(...decIdx.map(i => nd.maxDur[i]));
             document.getElementById('sLongest').textContent = longestInFilter + ' days';
 
