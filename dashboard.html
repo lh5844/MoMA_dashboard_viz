@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoMA Exhibitions 1929–1989</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <style>
         *,
@@ -48,8 +48,9 @@
         }
 
         .db-title {
-            font-size: 20px;
-            font-weight: 500;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 800;
             line-height: 1.1;
         }
 
@@ -137,8 +138,9 @@
         }
 
         .kpi-val {
+            font-family: 'Playfair Display', serif;
             font-size: 26px;
-            font-weight: 500;
+            font-weight: 700;
             line-height: 1;
         }
 
@@ -147,9 +149,9 @@
         }
 
         .kpi-lbl {
-            font-size: 11px;
+            font-size: 12px;
             color: #6B5F52;
-            margin-top: 4px;
+            margin-top: 10px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
@@ -169,7 +171,7 @@
         }
 
         .chart-title {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             margin-bottom: 2px;
             color: #1C1916;
@@ -256,7 +258,7 @@
         .mini-stat {
             background: #EDE6D8;
             border-radius: 6px;
-            padding: 10px 14px;
+            padding: 10px 16px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -264,17 +266,18 @@
         }
 
         .mini-val {
+            font-family: 'Playfair Display', serif;
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .mini-lbl {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: #6B5F52;
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
         .source {
@@ -331,7 +334,7 @@
             </div>
             <div class="kpi">
                 <div class="kpi-val" id="kArtists">24,400</div>
-                <div class="kpi-lbl">Unique artist appearances</div>
+                <div class="kpi-lbl">Unique artists</div>
             </div>
             <div class="kpi">
                 <div class="kpi-val accent" id="kFemale">9.8%</div>
@@ -484,10 +487,10 @@
 
             const allDec = selDec === 'all';
             lineChart.data.datasets[0].data = fpctVals;
-            lineChart.data.datasets[0].pointBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.6)'));
-            lineChart.data.datasets[0].pointHoverBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.6)'));
-            lineChart.data.datasets[0].pointRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 3));
-            lineChart.data.datasets[0].pointHoverRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 3));
+            lineChart.data.datasets[0].pointBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.5)'));
+            lineChart.data.datasets[0].pointHoverBackgroundColor = LABS.map((_, i) => allDec ? RED : (decIdx.includes(i) ? RED : 'rgba(192,57,43,0.5)'));
+            lineChart.data.datasets[0].pointRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 4));
+            lineChart.data.datasets[0].pointHoverRadius = LABS.map((_, i) => allDec ? 5 : (decIdx.includes(i) ? 6 : 4));
             lineChart.options.scales.y.max = Math.ceil((Math.max(...fpctVals) + 4) / 5) * 5;
             lineChart.update('active');
 
