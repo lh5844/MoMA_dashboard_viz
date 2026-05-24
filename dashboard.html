@@ -419,7 +419,7 @@
             const ctx = document.getElementById('barChart').getContext('2d');
             return new Chart(ctx, {
                 type: 'bar',
-                data: { labels: LABS, datasets: [{ data: NAT_DATA.all.exh, backgroundColor: NAT_DATA.all.exh.map(() => RED_LIGHT), borderColor: NAT_DATA.all.exh.map(() => RED), borderWidth: 1, borderRadius: 2 }] },
+                data: { labels: LABS, datasets: [{ data: NAT_DATA.all.exh, backgroundColor: NAT_DATA.all.exh.map(() => RED_LIGHT), borderColor: NAT_DATA.all.exh.map(() => RED), borderWidth: 1.5, borderRadius: 2 }] },
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' shows' } } },
@@ -435,7 +435,7 @@
             const ctx = document.getElementById('lineChart').getContext('2d');
             return new Chart(ctx, {
                 type: 'line',
-                data: { labels: LABS, datasets: [{ data: fpct, borderColor: RED, backgroundColor: RED_LIGHT, borderWidth: 2, pointBackgroundColor: RED, pointBorderWidth: 0, pointHoverBorderWidth: 0, pointRadius: 4, pointHoverRadius: 5, fill: true, tension: 0.3 }] },
+                data: { labels: LABS, datasets: [{ data: fpct, borderColor: RED, backgroundColor: RED_LIGHT, borderWidth: 1.5, pointBackgroundColor: RED, pointBorderWidth: 0, pointHoverBorderWidth: 0, pointRadius: 4, pointHoverRadius: 5, fill: true, tension: 0.3 }] },
                 options: {
                     responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toFixed(1) + '% female' } } },
@@ -481,8 +481,8 @@
             document.getElementById('sLongest').textContent = Math.max(...decIdx.map(i => nd.maxDur[i])) + ' days';
 
             barChart.data.datasets[0].data = nd.exh;
-            barChart.data.datasets[0].backgroundColor = LABS.map((_, i) => decIdx.includes(i) ? RED_LIGHT : 'rgba(140,123,107,0.08)');
-            barChart.data.datasets[0].borderColor = LABS.map((_, i) => decIdx.includes(i) ? RED : 'rgba(140,123,107,0.25)');
+            barChart.data.datasets[0].backgroundColor = LABS.map((_, i) => decIdx.includes(i) ? RED_LIGHT : 'rgba(140,123,107,0.30)');
+            barChart.data.datasets[0].borderColor = LABS.map((_, i) => decIdx.includes(i) ? RED : 'rgba(140,123,107,0.30)');
             barChart.update();
 
             const allDec = selDec === 'all';
